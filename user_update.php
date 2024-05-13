@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+<?php include 'nav_bar.php'; ?>
+
 <?php
+
     session_start(); // 세션 시작
 
     // Create connection

@@ -1,4 +1,5 @@
 <?php
+
     // logout.php 파일
 
     session_start(); // 세션 시작

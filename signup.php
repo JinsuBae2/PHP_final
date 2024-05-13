@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
+    <?php include 'nav_bar.php'; ?>
+
     <h1>회원가입</h1>
     <form action="signup_server.php" method="post">
       아이디 : <input type="text" name="userId" id="" /> <br />
