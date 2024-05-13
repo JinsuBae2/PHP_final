@@ -13,7 +13,7 @@
         $userTel = $_POST['userTel'];
         $userGender = $_POST['userGender'];
         $userName = $_POST['userName'];
-        $userBirth = $_POST['birth_year'].'년'.$_POST['birth_month'].'월'.$_POST['birth_day'].'일';
+        $userBirth = sprintf('%4d-%02d-%02d', $_POST['birth_year'], $_POST['birth_month'], $_POST['birth_day']);
         $postCode = $_POST['postcode'];
         $address = $_POST['address'].' '.$_POST['detailAddress'].$_POST['extraAddress'];
 
