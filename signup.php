@@ -4,6 +4,88 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      /* 전체 페이지에 대한 스타일링 */
+      body {
+          font-family: 'Arial', sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 20px;
+
+      }
+
+      h1 {
+          color: #333;
+          text-align: center;
+      }
+
+      /* 폼 스타일링 */
+      form {
+          background: #fff;
+          padding: 20px;
+          padding-left: 30%;
+          padding-right: 30%;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 라벨과 인풋 간격 */
+      form input[type="text"],
+      form input[type="password"],
+      form select {
+          width: 100%;
+          padding: 10px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+      #birth_year, #birth_month, #birth_day {
+        width: 20%
+      }
+
+      /* 우편번호 찾기 버튼 스타일링 */
+      form input[type="button"] {
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+
+      form input[type="button"]:hover {
+          background-color: #45a049;
+      }
+
+      /* 가입하기, 취소하기 버튼 스타일링 */
+      form input[type="submit"],
+      form input[type="reset"] {
+          width: auto;
+          background-color: #008CBA;
+          color: white;
+          padding: 10px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+
+      form input[type="submit"]:hover,
+      form input[type="reset"]:hover {
+          background-color: #007B9E;
+      }
+
+      /* 간격 조절 */
+      form br {
+          margin: 10px 0;
+      }
+
+
+    </style>
   </head>
   <body>
     <?php include 'nav_bar.php'; ?>

@@ -4,6 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        input[type=text], input[type=password], input[type=date], select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+            /* 우편번호 찾기 버튼 스타일링 */
+        form input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        /* 가입하기, 취소하기 버튼 스타일링 */
+        form input[type="submit"],
+        form input[type="reset"] {
+            width: auto;
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover,
+        form input[type="reset"]:hover {
+            background-color: #007B9E;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <?php include 'nav_bar.php'; ?>
@@ -37,7 +106,7 @@
     <form action="user_update_server.php" method="post">
         아이디 : <input type="text" name="userId" id="" value="<?= $row["userId"]; ?>" readonly /> <br /> 
         비밀번호 : <input type="password" name="userPw1" id="" />
-        비밀번호확인 : <input type="password" name="userPw2" id="" />
+        비밀번호확인 : <input type="password" name="userPw2" id="" /> <br>
         이메일 : <input type="text" id="userEmail" name="userEmail" value="<?= $userEmail; ?>" /> @
         <select name="emailDomain" id="emailDomain">
             <option value="직접 입력">직접 입력</option>

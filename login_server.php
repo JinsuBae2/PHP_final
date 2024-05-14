@@ -30,8 +30,6 @@
                         window.close(); // 팝업 창 닫기
                     </script>";
                 exit();
-                // header("Location: index.php"); // 사용자를 index.php로 리디렉션
-                // exit(); // 중요: 리디렉션 후에는 추가적인 코드 실행을 방지하기 위해 exit() 함수를 호출해야 함
             } else {
                 echo "Invalid userId or userPw";
             }
