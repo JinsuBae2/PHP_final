@@ -16,13 +16,13 @@
         $userBirth = sprintf('%4d-%02d-%02d', $_POST['birth_year'], $_POST['birth_month'], $_POST['birth_day']);
         $postCode = $_POST['postcode'];
         $address = $_POST['address'].' '.$_POST['detailAddress'].$_POST['extraAddress'];
-
+        $signup_date = date('Y-m-d H:i:s');
         //1.DB 접속
         $con = mysqli_connect("localhost","root","","final_project");
         
         //2.DB사용 - sql명령어
-        $sql = "insert into signup (userId, userPw, userEmail, userTel, userGender, userName, userBirth, postCode, address) "; 
-        $sql .= "values('$userId', '$userPw', '$userEmail', '$userTel', '$userGender', '$userName', '$userBirth', '$postCode', '$address')";
+        $sql = "insert into signup (userId, userPw, userEmail, userTel, userGender, userName, userBirth, postCode, address, signup_date) "; 
+        $sql .= "values('$userId', '$userPw', '$userEmail', '$userTel', '$userGender', '$userName', '$userBirth', '$postCode', '$address', '$signup_date')";
 
         mysqli_query($con, $sql); //$sqldp 저장된 명령 실행
 

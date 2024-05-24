@@ -31,7 +31,10 @@
                     </script>";
                 exit();
             } else {
-                echo "Invalid userId or userPw";
+                echo "<script>
+                        alert('아이디와 비밀번호를 다시 입력하세요');
+                        history.back()    
+                    </script>";
             }
         }
         

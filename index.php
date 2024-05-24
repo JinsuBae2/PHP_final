@@ -6,7 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include 'nav_bar.php'; ?>
+    <header>
+        <?php include 'nav_bar.php'; ?>
+    </header>
+    <section>
+
+    </section>
+    <footer>
         
+    </footer>
 </body>
 </html>

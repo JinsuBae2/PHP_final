@@ -96,14 +96,15 @@
       비밀번호 : <input type="password" name="userPw1" id="" /> <br />
       비밀번호 확인 : <input type="password" name="userPw2" id="" /> <br />
       이메일 : <input type="text" id="userEmail" name="userEmail" /> @
-      <select name="emailDomain" id="emailDomain">
-        <option value="직접 입력">직접 입력</option>
+      <select name="selectEmailDomain" id="selectEmailDomain" onchange="checkEmailDomain();">
+        <option value="">직접 입력</option>
         <option value="gmail.com">gmail.com</option>
         <option value="naver.com">naver.com</option>
         <option value="daum.net">daum.net</option>
         <option value="nate.com">nate.com</option>
         <option value="hotmail.com">hotmail.com</option>
       </select>
+      <input type="text" id="emailDomain" name="emailDomain" placeholder="직접 입력" />
       <br />
       휴대전화 :
       <input
@@ -207,8 +208,6 @@
       <input type="submit" value="가입하기" />
       <input type="reset" value="취소하기" />
     </form>
-
-    
     <!-- 다음 주소검색 API -->
     <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -263,6 +262,13 @@
           },
         }).open();
       }
+
+      function checkEmailDomain() {
+      var selectEmailDomain = document.getElementById("selectEmailDomain").value;
+      var emailDomain = document.getElementById("emailDomain");
+      emailDomain.value = selectEmailDomain; // 선택된 도메인을 직접 입력 필드에 자동으로 채워줍니다.
+      
+    }
     </script>
   </body>
 </html>

@@ -68,15 +68,11 @@
           <label for="userPw">비밀번호</label>
       </div>
       <div id="forgot">
-        <a href="">아이디 찾기</a>
-        <a href="">비밀번호 찾기</a>
+        <a href="find_id.php">아이디 찾기</a>
+        <a href="find_pw.php">비밀번호 찾기</a>
       </div>
       <input type="submit" value="로그인">
       <input type="reset" value="취소" onclick="windowClose()"/>
-      <!-- 아이디 : <input type="text" name="userId" id="" /> <br />
-      비밀번호 : <input type="password" name="userPw" id="" /> <br />
-      <input type="submit" value="로그인" />
-      <input type="reset" value="취소" onclick="windowClose()"/> -->
     </form>
     <script>
       windowClose = () => {
