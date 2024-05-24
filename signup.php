@@ -94,6 +94,12 @@
           "left=700,top=300,width=350,height=200,scrollbars=no,resizable=yes"
         );
       }
+      function checkEmailDomain() {
+        var selectEmailDomain = document.getElementById("selectEmailDomain").value;
+        var emailDomain = document.getElementById("emailDomain");
+        emailDomain.value = selectEmailDomain; // 선택된 도메인을 직접 입력 필드에 자동으로 채워줍니다.
+        
+      }
     </script>
   </head>
   <body>
@@ -272,12 +278,7 @@
         }).open();
       }
 
-      function checkEmailDomain() {
-      var selectEmailDomain = document.getElementById("selectEmailDomain").value;
-      var emailDomain = document.getElementById("emailDomain");
-      emailDomain.value = selectEmailDomain; // 선택된 도메인을 직접 입력 필드에 자동으로 채워줍니다.
       
-    }
     </script>
   </body>
 </html>

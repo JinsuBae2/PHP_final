@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1>aaa</h1>
+      <h1>맛집 검색 맛집</h1>
     </header>
     <nav>
         <a href='index.php'>홈</a>
@@ -39,8 +39,6 @@
     </nav>
     <script>
         function openLoginWindow() {
-          // 새 창을 열고, 크기와 위치를 지정합니다.
-          // window.open(URL, name, specs, replace)
           window.open(
             "login.php",
             "loginWindow",

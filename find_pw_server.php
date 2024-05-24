@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+
+    </style>
 </head>
 <body>
 <?php 
@@ -39,11 +42,11 @@
     ?>
             <script>
                 alert("확인되었습니다.")
+                location.href = 'find_reset_password.php?userId=<?=$findId?>';
             </script>
-    <?php        
-            echo '<a href="find_reset_password.php?userId=$findId">비밀번호 재설정</a>';
+        
+    <?php
         }
-
         $stmt->close();
         $con->close();
     ?>
