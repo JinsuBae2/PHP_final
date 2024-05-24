@@ -86,13 +86,22 @@
 
 
     </style>
+    <script>
+      checkId = () => {
+        window.open(
+          'check_Id.php?userId=' + document.getElementById('userId').value,
+          "IDCheck",
+          "left=700,top=300,width=350,height=200,scrollbars=no,resizable=yes"
+        );
+      }
+    </script>
   </head>
   <body>
     <?php include 'nav_bar.php'; ?>
 
     <h1>회원가입</h1>
     <form action="signup_server.php" method="post">
-      아이디 : <input type="text" name="userId" id="" /> <br />
+      아이디 : <input type="text" name="userId" id="userId" /> <input type="button" value="중복확인" onclick=checkId()> <br />
       비밀번호 : <input type="password" name="userPw1" id="" /> <br />
       비밀번호 확인 : <input type="password" name="userPw2" id="" /> <br />
       이메일 : <input type="text" id="userEmail" name="userEmail" /> @
