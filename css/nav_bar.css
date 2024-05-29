@@ -8,8 +8,8 @@ body {
 
 /* 헤더 스타일링 */
 header {
-  background: #333;
-  color: #fff;
+  background: #fff;
+  color: black;
   padding: 20px;
   text-align: center;
 }

@@ -85,8 +85,8 @@
         </head>
         <body>
             <form action="find_reset_password_process.php" method="post">
-                <input type="password" id="newPassword1" name="newPassword1" required placeholder="비밀번호 입력">
-                <input type="password" id="newPassword2" name="newPassword2" required placeholder="비밀번호 확인">
+                <input type="password" id="newPassword1" name="newPassword1" required placeholder="새로운 비밀번호 입력">
+                <input type="password" id="newPassword2" name="newPassword2" required placeholder="새로운 비밀번호 확인">
                 <button type="submit" onclick=passwordCheck()>비밀번호 재설정</button>
             </form>
         </body>

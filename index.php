@@ -7,10 +7,10 @@
 </head>
 <body>
     <header>
-        <?php include 'nav_bar.php'; ?>
+        <?php include 'header.php'; ?>
     </header>
     <section>
-
+        
     </section>
     <footer>
         

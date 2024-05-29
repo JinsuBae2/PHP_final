@@ -1,19 +1,17 @@
 <?php
 session_start(); // 세션 시작
 
-// 데이터베이스 연결 설정
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'final_project';
-
 // Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
+$conn = mysqli_connect('localhost', 'root', '', 'final_project');
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    $error_code = mysqli_connect_errno();
+    $error_message = mysqli_connect_error();
+    
+    echo "데이터베이스 연결 실패: ($error_code) $error_message";
+    exit();
 }
+
 
 // POST 데이터 수집
 $userId = $_SESSION['userId']; // 세션에서 사용자 ID 가져오기
@@ -30,22 +28,28 @@ $address = $_POST['address']. ' ' . $_POST['detailAddress'].$_POST['extraAddress
 $hashed_password = password_hash($userPw, PASSWORD_DEFAULT);
 
 // SQL 준비
-$sql = "UPDATE signup SET userPw=?, userEmail=?, userTel=?, userGender=?, userName=?, userBirth=?, postcode=?, address=?, WHERE userId=?";
+$sql = "UPDATE signup SET userPw=?, userEmail=?, userTel=?, userGender=?, userName=?, userBirth=?, postcode=?, address=? WHERE userId=?";
 
 // 준비된 문(Prepared Statement) 준비
-$stmt = $conn->prepare($sql);
+$stmt = mysqli_prepare($conn, $sql);
 
-// 변수를 준비된 문에 바인딩
-$stmt->bind_param("sssssssssss", $hashed_password, $userEmail, $userTel, $userGender, $userName, $userBirth, $postcode, $address, $userId);
-
-// 쿼리 실행
-if ($stmt->execute()) {
-    echo "회원정보가 성공적으로 업데이트되었습니다.";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+if ($stmt === false) {
+    die("준비된 문 생성 실패: " . mysqli_error($conn));
 }
 
-// 연결 종료
-$stmt->close();
-$conn->close();
+// 변수를 준비된 문에 바인딩
+mysqli_stmt_bind_param($stmt, "ssssssssi", $hashed_password, $userEmail, $userTel, $userGender, $userName, $userBirth, $postcode, $address, $userId);
+
+// 쿼리 실행
+if (mysqli_stmt_execute($stmt)) {
+    echo "회원정보가 성공적으로 업데이트되었습니다.";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+// 준비된 SQL문 종료
+mysqli_stmt_close($stmt);
+
+// 데이터베이스 연결 종료
+mysqli_close($conn);
 ?>

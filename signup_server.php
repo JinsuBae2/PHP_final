@@ -17,19 +17,29 @@
         $postCode = $_POST['postcode'];
         $address = $_POST['address'].' '.$_POST['detailAddress'].$_POST['extraAddress'];
         $signup_date = date('Y-m-d H:i:s');
-        //1.DB 접속
-        $con = mysqli_connect("localhost","root","","final_project");
+
+        // 비밀번호 해싱
+        $hashed_password = password_hash($userPw, PASSWORD_DEFAULT);
+
+        include "db_con.php";
         
         //2.DB사용 - sql명령어
-        $sql = "insert into signup (userId, userPw, userEmail, userTel, userGender, userName, userBirth, postCode, address, signup_date) "; 
-        $sql .= "values('$userId', '$userPw', '$userEmail', '$userTel', '$userGender', '$userName', '$userBirth', '$postCode', '$address', '$signup_date')";
+        $sql = "INSERT INTO signup (userId, userPw, userEmail, userTel, userGender, userName, userBirth, postcode, address, signup_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        mysqli_query($con, $sql); //$sqldp 저장된 명령 실행
-
-        //3.DB해제
-        mysqli_close($con);
+        // 준비된 문(Prepared Statement) 준비
+        $stmt = mysqli_prepare($con, $sql);
+        
+        // 변수를 준비된 문에 바인딩
+        mysqli_stmt_bind_param($stmt, "sssssssss", $userId, $hashed_password, $userEmail, $userTel, $userGender, $userName, $userBirth, $postcode, $address, $signup_date);
+        
+       // 3. DB 해제
+       mysqli_stmt_close($stmt);
+       mysqli_close($con);
     ?>  
-    <h1>회원가입 되셨습니다 !</h1>
+    <!-- <script>
+        alert("회원가입이 완료되었습니다.")
+        location.href('index.php');
+    </script> -->
     <p>
         아이디 : <?=$userId?>   <br>
         비밀번호 : <?=$userPw?> <br>
@@ -40,6 +50,7 @@
         생년월일 : <?=$userBirth?>    <br>
         우편번호 : <?=$postCode?>   <br>
         주소 : <?=$address?>    <br>
+        가입 날짜 : <?=$signup_date?>
     </p>
     <a href="index.php">뒤로가기</a>
 </body>

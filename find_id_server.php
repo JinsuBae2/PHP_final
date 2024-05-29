@@ -10,20 +10,22 @@
         $findName = $_POST['findName'];
         $findEmail = $_POST['findEmail'].'@'.$_POST['findEmailDomain'];
 
-        $con = new mysqli('localhost','root','','final_project');
+        include 'db_con.php';
 
-        if ($con->connect_error) {
-            die("Connection failed: " . $con->connect_error);
+        // 연결 오류 확인
+        if (!$con) {
+            die("Connection failed: " . mysqli_connect_error());
         }
 
         // SQL Injection 방지를 위한 prepared statement 사용
-        $stmt = $con->prepare("SELECT * FROM signup WHERE userName = ? AND userEmail = ?");
-        $stmt->bind_param("ss", $findName, $findEmail);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $sql = "SELECT * FROM signup WHERE userName = ? AND userEmail = ?";
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "ss", $findName, $findEmail);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-         // 사용자 정보가 있는지 확인
-         if ($result->num_rows == 0) {
+        // 사용자 정보가 있는지 확인
+        if (mysqli_num_rows($result) == 0) {
             // 사용자가 없으면 알림
     ?>
             <script>
@@ -33,21 +35,20 @@
     <?php
         } else {
             // 사용자가 있으면 결과 가져오기
-            $row = $result->fetch_assoc();
+            $row = mysqli_fetch_assoc($result);
             $userId = $row['userId']; // 사용자 ID를 가져옵니다. 'userId'는 해당 컬럼의 실제 이름이어야 합니다.
     ?>
-            
             <script>
                 alert("사용자 아이디는 <?= $userId ?>입니다.")
                 history.back();
             </script>
     <?php        
-
         }
 
-        $stmt->close();
-        $con->close();
+        // 리소스 해제 및 연결 종료
+        mysqli_free_result($result);
+        mysqli_stmt_close($stmt);
+        mysqli_close($con);
     ?>
-
 </body>
 </html>

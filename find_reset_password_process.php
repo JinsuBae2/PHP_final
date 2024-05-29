@@ -40,35 +40,34 @@
 
         $userPw = $_POST['newPassword1'];
 
-        $con = new mysqli("localhost", "root", "", "final_project");
-        
-        if ($con->connect_error) {
-            die("Connection failed: " . $con->connect_error);
-        }
+        include 'db_con.php';
+
 
         $sql = "UPDATE signup SET userPw=? WHERE userId=?";
 
-        $stmt = $con->prepare($sql);
+        $stmt = mysqli_prepare($con, $sql);
         
         if ($stmt === false) {
-            die("Prepare failed: " . $con->error);
+            die("준비된 SQL문 생성 실패: " . mysqli_error($conn));
         }
 
-        $stmt->bind_param("ss", $userPw, $userId);
+        mysqli_stmt_bind_param($stmt, "ss", $userPw, $userId);
 
         // 쿼리 실행
-        if ($stmt->execute()) {
+        if (mysqli_stmt_execute($stmt)) {
             echo "비밀번호가 성공적으로 업데이트되었습니다.";
         } else {
-            echo "Error: " . $stmt->error;
+            echo "Error: " . mysqli_error($con);
         }
         ?>
         <button onclick="window.close()">확인</button>
         <?php
 
-        // 연결 종료
-        $stmt->close();
-        $con->close();
+        // 준비된 SQL문 종료
+        mysqli_stmt_close($stmt);
+
+        // 데이터베이스 연결 종료
+        mysqli_close($conn);
     ?>
 </body>
 </html>
