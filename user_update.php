@@ -86,21 +86,16 @@
         </style>
 
 
-        <script>
-            function confirmDelete() {
-                if (confirm("정말로 회원을 탈퇴하시겠습니까?")) {
-                    window.location.href = 'user_delete_server.php';
-                }
-                else {
-                    history.back();
-                }
-            }
-        </script>
+        
     </head>
     <body>
-    <?php include 'header.php'; ?>
+
+    <?php 
+        include 'header.php';
+     ?>
 
     <?php
+        
         $userId = $_SESSION['userId'];
         // if (isset($_SESSION['userId'])){
         //     $userId = $_SESSION['userId'];
@@ -223,6 +218,16 @@
 
                 emailDomain.value = selectEmailDomain;
     }
+        </script>
+        <script>
+            function confirmDelete() {
+                if (confirm("정말로 회원을 탈퇴하시겠습니까?")) {
+                    window.location.href = 'user_delete_server.php';
+                }
+                else {
+                    history.back();
+                }
+            }
         </script>
     </body>
     </html>

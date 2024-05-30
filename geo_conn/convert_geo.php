@@ -10,10 +10,10 @@
     <!-- PHP 작성 -->
 
     <?php
-    $conn = mysqli_connect('localhost', 'root', '', 'final_project');
+    $con = mysqli_connect('localhost', 'root', '', 'final_project');
 
     $sql = "SELECT * FROM store WHERE x is null order by id asc";
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($con, $sql);
 
     if($result) {
         ?>
@@ -66,14 +66,14 @@
     <?php 
     }
 
-    mysqli_close($conn);
+    mysqli_close($con);
     ?>
 <script>
     function save_geo(x, y, id) {
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('target', '_blank');
-        form.setAttribute('action', 'save_geo.php');
+        form.setAttribute('target', '_self');
+        form.setAttribute('action', './geo_conn/save_geo.php');
         document.charset = "UTF-8";
 
         var hiddenField1 = document.createElement('input');

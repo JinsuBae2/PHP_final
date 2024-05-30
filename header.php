@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,6 +76,7 @@
 
   </head>
   <body>
+    
     <div id="h_div">
         <a href='index.php'>홈</a>
         <span>
@@ -83,16 +85,15 @@
         </span>
         <span>
         <?php
-            session_start();
-
+            
+            $userId = $_SESSION['userId'];
             if (isset($_SESSION['userId'])){
         ?>
         
-            <a href='user_update.php?userId=<?=$_SESSION['userId']?>'>회원정보 수정</a>  
+            <a href='user_update.php?userId=<?=$userId?>'>회원정보 수정</a>  
             <a href='logout.php'>로그아웃</a> 
         <?php
-            }
-            else {
+            } else {
         ?>
               <a href='' onclick='openLoginWindow()'>로그인</a>
               <a href='signup.php'>회원가입</a>

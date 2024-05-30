@@ -1,3 +1,4 @@
+<?php include 'header.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,7 @@
 </head>
 
 <body>
-<?php include 'header.php' ?>
-<?php include 'nav_bar.php' ?>
+
 
 <div >
     <div id='map' class="display:inline-block" style="width: 1540px; height: 700px;"></div>

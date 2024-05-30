@@ -1,14 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
 <?php
-    include "db_conn.php";
+    include "../db_con.php";
 
     $id = $_POST['id'];
     $x = $_POST['x'];
@@ -18,11 +9,14 @@
     echo "x : ".$x."     /     ";
     echo "y : ".$y;
 
-    $sql = "UPDATE store SET x=$x, y=$y WHERE id=$id";
+    $sql = "UPDATE store SET x='$x', y='$y' WHERE id=$id";
 
-    $result = mysqli_query($connect, $sql);
+    $result = mysqli_query($con, $sql);
 
-    mysqli_close($connect);
+    mysqli_close($con);
+
+    echo "<script>
+            alert('업데이트 성공');
+            location.href = '../list_store.php';
+        </script>"
 ?>
-</body>
-</html>

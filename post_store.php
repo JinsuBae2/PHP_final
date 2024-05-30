@@ -121,12 +121,12 @@
     ?>
     <section>
     <h3>글쓰기</h3> <hr>
-    <form action="post_store_server.php?userId=<?=$session_userId?>" method="post">
+    <form action="post_store_server.php?userId=<?=$session_userId?>" method="post" enctype="multipart/form-data">
         사용자 이름 : <?=$session_userId?> <br>
         <input type="text" name="post_name" id="post_name" placeholder="음식점 이름">  
         <input type="button" value="찾기" onclick="store_search()"> <br>
         <input type="text" name="post_address" id="post_address" placeholder="음식점 주소"><br>
-        이미지 첨부 : <input type="file" name="file" id="imageFileOpenInput" accept="image/*, video/*"> <br>
+        이미지 첨부 : <input type="file" name="upfile" id="upfile"> <br>
         <textarea name="post_contents" id="post_contents" cols="30" rows="10" placeholder="내용을 입력하세요."></textarea> <br>
         <input type="text" name="recommend_menu" id="recommend_menu" placeholder="추천 메뉴"> <br>
         평점 : <br><input type="range" min="1" max="5" name="rating" id="rating" list="rating_data">
