@@ -1,15 +1,15 @@
 <?php
-    include "../db_con.php";
+    include "db_con.php";
 
-    $id = $_POST['id'];
+    $post_Id = $_POST['post_Id'];
     $x = $_POST['x'];
     $y = $_POST['y'];
 
-    echo "id : ".$id."    =      ";
+    echo "post_Id : ".$post_Id."    =      ";
     echo "x : ".$x."     /     ";
     echo "y : ".$y;
 
-    $sql = "UPDATE store SET x='$x', y='$y' WHERE id=$id";
+    $sql = "UPDATE store SET x='$x', y='$y' WHERE post_Id=$post_Id";
 
     $result = mysqli_query($con, $sql);
 
@@ -17,6 +17,6 @@
 
     echo "<script>
             alert('업데이트 성공');
-            location.href = '../list_store.php';
+            location.href = 'store_list.php';
         </script>"
 ?>

@@ -10,9 +10,9 @@
     <!-- PHP 작성 -->
 
     <?php
-    $con = mysqli_connect('localhost', 'root', '', 'final_project');
-
-    $sql = "SELECT * FROM store WHERE x is null order by id asc";
+    include "db_con.php";
+    
+    $sql = "SELECT * FROM store WHERE x is null order by post_Id asc";
     $result = mysqli_query($con, $sql);
 
     if($result) {
@@ -54,7 +54,7 @@
 
             console.log(result[0].y + " / " + result[0].x);
           
-            save_geo(result[0].y, result[0].x, <?=$row['id'] ?>);
+            save_geo(result[0].y, result[0].x, <?=$row['post_Id'] ?>);
                     
         }
         else {
@@ -73,12 +73,12 @@
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
         form.setAttribute('target', '_self');
-        form.setAttribute('action', './geo_conn/save_geo.php');
+        form.setAttribute('action', 'geo_save.php');
         document.charset = "UTF-8";
 
         var hiddenField1 = document.createElement('input');
         hiddenField1.setAttribute('type', 'hidden');
-        hiddenField1.setAttribute('name', 'id');
+        hiddenField1.setAttribute('name', 'post_Id');
         hiddenField1.setAttribute('value', id);
         var hiddenField2 = document.createElement('input');
         hiddenField2.setAttribute('type', 'hidden');

@@ -108,7 +108,6 @@
 <body>
     <?php 
         include 'header.php';
-        include 'nav_bar.php';
         if(isset($_SESSION['userId'])) {
             $session_userId = $_SESSION['userId'];
         } else {

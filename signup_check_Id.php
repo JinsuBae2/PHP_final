@@ -58,22 +58,16 @@
 if (isset($_GET['userId'])) {
     $userId = $_GET['userId'];
 
-    // 데이터베이스 연결
-    $con = new mysqli("localhost", "root", "", "final_project");
-
-    // 연결 확인
-    if ($con->connect_error) {
-        die("Database connection failed: " . $con->connect_error);
-    }
+    include "db_con.php";
 
     // SQL 인젝션 방지
-    $userId = $con->real_escape_string($userId);
+    $userId = mysqli_real_escape_string($con, $userId);
 
     $sql = "SELECT userId FROM signup WHERE userId='$userId'";
 
-    $result = $con->query($sql);
+    $result = mysqli_query($con, $sql);
 
-    if ($result->num_rows > 0) {
+    if (mysqli_num_rows($result) > 0) {
         echo "<ul><li class='error'>이미 사용중인 아이디입니다</li></ul>";
     } else {
         echo "<ul><li class='success'>사용 가능한 아이디 입니다.</li></ul>";
@@ -81,9 +75,9 @@ if (isset($_GET['userId'])) {
         ?>
         <button onclick="window.close()">확인</button>
         <?php
-    $con->close();
+    mysqli_close($con);
 } else {
-    echo "<script>alert('userId 파라미터가 필요합니다.')</script>";
+    echo "<script>alert('ID가 필요합니다.')</script>";
 }
 ?>
 </div>

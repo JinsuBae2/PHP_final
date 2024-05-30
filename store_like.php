@@ -25,7 +25,7 @@ if (strpos($like_id, $userId) !== false) {
 } else {
     // 사용자 ID가 없으면 좋아요를 추가합니다.
     // `like_Id`가 `null`일 경우를 대비하여 `COALESCE`와 `CONCAT`을 사용합니다.
-    $sql = "UPDATE store SET store_like = store_like + 1, like_Id = CONCAT(COALESCE(like_Id, ''), ' ', ?) WHERE post_Id = ?";
+    $sql = "UPDATE store SET store_like = store_like + 1, like_Id = CONCAT(COALESCE(like_Id, ''), ?) WHERE post_Id = ?";
 }
 
 $stmt = mysqli_prepare($con, $sql);
@@ -35,5 +35,5 @@ mysqli_stmt_close($stmt);
 mysqli_close($con);
 
 // 페이지 리다이렉션
-echo "<script>location.href = 'list_store.php'</script>";
+echo "<script>location.href = 'store_list.php'</script>";
 ?>

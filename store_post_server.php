@@ -11,7 +11,7 @@
 
         include 'db_con.php';
         
-        $upload_dir = 'images/';
+        $upload_dir = './images/';
 
         $upfile_name	 = $_FILES["upfile"]["name"];
         $upfile_tmp_name = $_FILES["upfile"]["tmp_name"];
@@ -59,13 +59,13 @@
         }
 
         //2.DB사용 - sql명령어
-        $sql = "INSERT INTO store (userId, store_name, store_address, post_contents, recommend_menu, rating, file_name, file_type, file_copied, post_date) ";
-        $sql .= "VALUES ('$userId', '$store_name', '$store_address', '$post_contents', '$recommend_menu', $rating, '$upfile_name', '$upfile_type', '$copied_file_name', '$post_date')";
+        $sql = "INSERT INTO store (userId, store_name, store_address, post_contents, recommend_menu, rating, file_copied, post_date) ";
+        $sql .= "VALUES ('$userId', '$store_name', '$store_address', '$post_contents', '$recommend_menu', $rating, '$copied_file_name', '$post_date')";
 
         mysqli_query($con, $sql);
         
         //3.DB해제
         mysqli_close($con);
 
-        include "./geo_conn/convert_geo.php";
+        include "geo_convert.php";
     ?>

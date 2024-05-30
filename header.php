@@ -105,7 +105,7 @@
     </div>
     <nav>
       <a href='view_store.php'>맛집 지도 보기</a> |
-      <a href="list_store.php">맛집 리스트</a> |
+      <a href="store_list.php">맛집 리스트</a> |
       <a href='#'>맛집 후기</a> |
       
     </nav>
