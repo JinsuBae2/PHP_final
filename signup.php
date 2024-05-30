@@ -89,7 +89,7 @@
     <script>
       checkId = () => {
         window.open(
-          'check_Id.php?userId=' + document.getElementById('userId').value,
+          'signup_check_Id.php?userId=' + document.getElementById('userId').value,
           "IDCheck",
           "left=700,top=300,width=350,height=200,scrollbars=no,resizable=yes"
         );

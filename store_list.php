@@ -1,3 +1,25 @@
+<?php
+        include 'header.php';
+        include 'db_con.php';
+
+        $session_userId = $_SESSION['userId'];
+
+        $offset = $_GET['offset'] ? $_GET['offset'] : 1;
+        $viewPost = 5 * $offset;
+
+        $sql = "SELECT * FROM store order by post_Id DESC LIMIT $viewPost";
+        $result = mysqli_query($con, $sql);
+
+        $posts = [];
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($posts, $row);
+        }
+
+        $total_post_result = mysqli_query($con, "SELECT COUNT(post_Id) FROM store");
+        $total_post = (mysqli_fetch_row($total_post_result))[0];
+        $total_pages = ceil($total_post / $viewPost);
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +95,23 @@
             height: 300px;
             border-radius: 10%; /* 원형 이미지 */
         }
+        /* 더보기 버튼 스타일 */
+        .more-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* 파란색 배경 */
+            color: #ffffff; /* 흰색 텍스트 */
+            text-align: center;
+            text-decoration: none; /* 링크 밑줄 제거 */
+            border-radius: 5px; /* 모서리 둥글게 */
+            font-weight: bold; /* 글자 굵게 */
+            transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
+        }
+        .more-button:hover {
+            background-color: #0056b3; /* 마우스 오버 시 배경색 변경 */
+            color: #fff; /* 마우스 오버 시 텍스트 색상 유지 */
+            text-decoration: none; /* 마우스 오버 시 밑줄 제거 유지 */
+        }
     </style>
 </head>
     <script>
@@ -92,15 +131,7 @@
     </script>
 </head>
 <body>
-    <?php
-        include 'header.php';
-        include 'db_con.php';
-
-        $session_userId = $_SESSION['userId'];
-
-        $sql = "SELECT * FROM store order by post_Id DESC";
-        $result = mysqli_query($con, $sql);
-    ?>
+    
     <section>
         <h3>맛집 리스트 ></h3> 
         <hr>
@@ -111,18 +142,31 @@
                     if (!$result) {
                         echo "<li>등록된 글이 없습니다.</li>";
                     } else {
-                        while ($row = mysqli_fetch_array($result)) {
-                            $post_Id = $row['post_Id'];
-                            $userId = $row['userId'];
-                            $store_name = $row['store_name'];
-                            $store_address = $row['store_address'];
-                            $post_contents = $row['post_contents'];
-                            $recommend_menu = $row['recommend_menu'];
-                            $rating = $row['rating'];
-                            $store_like = $row['store_like'];
-                            $post_date = $row['post_date'];
-                            $file_copied = $row['file_copied'];
-                            $like_Id = $row['like_Id'];
+                        // while ($row = mysqli_fetch_array($result)) {
+                            // $post_Id = $row['post_Id'];
+                            // $userId = $row['userId'];
+                            // $store_name = $row['store_name'];
+                            // $store_address = $row['store_address'];
+                            // $post_contents = $row['post_contents'];
+                            // $recommend_menu = $row['recommend_menu'];
+                            // $rating = $row['rating'];
+                            // $store_like = $row['store_like'];
+                            // $post_date = $row['post_date'];
+                            // $file_copied = $row['file_copied'];
+                            // $like_Id = $row['like_Id'];
+                            // $rating_star = str_repeat('⭐️', $rating);
+                        foreach ($posts as $post) {
+                            $post_Id = $post['post_Id'];
+                            $userId = $post['userId'];
+                            $store_name = $post['store_name'];
+                            $store_address = $post['store_address'];
+                            $post_contents = $post['post_contents'];
+                            $recommend_menu = $post['recommend_menu'];
+                            $rating = $post['rating'];
+                            $store_like = $post['store_like'];
+                            $post_date = $post['post_date'];
+                            $file_copied = $post['file_copied'];
+                            $like_Id = $post['like_Id'];
                             $rating_star = str_repeat('⭐️', $rating);
                 ?>
                             <div id="store_list_div">
@@ -157,7 +201,16 @@
                         }
                     }
                 ?>
+                
             </ul>
+            <?php 
+            echo "<script>console.log($total_post, $viewPost, $total_pages )</script>";
+            if ($viewPost - $total_post > 5) { ?>
+                <script>alert('마지막 게시글 입니다.')</script>
+                <div class="more-button">더보기</div>
+            <?php } else { ?>
+                <a href="store_list.php?offset=<?=$offset + 1 ?>" onclick="saveScrollPosition()" class="more-button">더보기</a>
+            <?php } ?>
         </div>
     </section>
 </body>
