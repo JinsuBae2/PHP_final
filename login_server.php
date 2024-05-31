@@ -9,20 +9,23 @@
     <?php
         session_start();
 
-        $con = mysqli_connect("localhost","root","","final_project");
-    
-        //2.DB사용 - sql명령어
+        $con = mysqli_connect("localhost", "root", "", "final_project");
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $userId = mysqli_real_escape_string($con, $_POST['userId']);
-            $userPw = mysqli_real_escape_string($con, $_POST['userPw']);
-        
-            $sql = "SELECT userId FROM signup WHERE userId = '$userId' AND userPw = '$userPw'";
-            $result = mysqli_query($con, $sql);
-        
-            $row = mysqli_fetch_array($result);
-            $num_rows = mysqli_num_rows($result);
-            
-            if ($num_rows == 1) {
+            $userPw = $_POST['userPw']; // 비밀번호는 해싱하지 않고 원본을 사용
+
+            $sql = "SELECT userPw FROM signup WHERE userId = ?";
+
+            // 준비된 sql문(Prepared Statement) 준비
+            $stmt = mysqli_prepare($con, $sql);
+            mysqli_stmt_bind_param($stmt, "s", $userId);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_store_result($stmt);
+            mysqli_stmt_bind_result($stmt, $hashed_password_from_db);
+            mysqli_stmt_fetch($stmt);
+
+            if (mysqli_stmt_num_rows($stmt) == 1 && password_verify($userPw, $hashed_password_from_db)) {
                 $_SESSION['userId'] = $userId;
                 echo "<script>
                         window.opener.location.reload(); // 부모 창을 새로고침
@@ -32,12 +35,15 @@
             } else {
                 echo "<script>
                         alert('아이디와 비밀번호를 다시 입력하세요');
-                        history.back()    
+                        history.back();
                     </script>";
             }
+
+            // 준비된 문 닫기
+            mysqli_stmt_close($stmt);
         }
-        
-        //3.DB해제
+
+        // DB 연결 해제
         mysqli_close($con);
     ?>
 </body>

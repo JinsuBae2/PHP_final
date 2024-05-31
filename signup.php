@@ -1,9 +1,17 @@
+<?php 
+  include 'header.php'; 
+  include 'db_con.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./js/signup.js"></script>
+    <!-- 다음 주소검색 API -->
+    <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="js/daum_adress_api.js"></script>
     <style>
       /* 전체 페이지에 대한 스타일링 */
       body {
@@ -86,27 +94,11 @@
 
 
     </style>
-    <script>
-      checkId = () => {
-        window.open(
-          'signup_check_Id.php?userId=' + document.getElementById('userId').value,
-          "IDCheck",
-          "left=700,top=300,width=350,height=200,scrollbars=no,resizable=yes"
-        );
-      }
-      function checkEmailDomain() {
-        var selectEmailDomain = document.getElementById("selectEmailDomain").value;
-        var emailDomain = document.getElementById("emailDomain");
-        emailDomain.value = selectEmailDomain; // 선택된 도메인을 직접 입력 필드에 자동으로 채워줍니다.
-        
-      }
-    </script>
+    
   </head>
   <body>
-    <?php include 'header.php'; ?>
-
     <h1>회원가입</h1>
-    <form action="signup_server.php" method="post">
+    <form action="signup_server.php" method="post" onsubmit="return validateForm()">
       아이디 : <input type="text" name="userId" id="userId" /> <input type="button" value="중복확인" onclick=checkId()> <br />
       비밀번호 : <input type="password" name="userPw1" id="" /> <br />
       비밀번호 확인 : <input type="password" name="userPw2" id="" /> <br />
@@ -129,7 +121,6 @@
         placeholder="휴대폰 번호"
         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
         title="휴대폰 번호 형식: 010-1234-5678"
-        required
       />
       <br />
       성별 :
@@ -139,7 +130,7 @@
         <option value="여">여</option>
       </select>
       <br />
-      이름 : <input type="text" name="userName" id="" /> <br />
+      이름 : <input type="text" name="userName" id="userName" /> <br />
       생년월일 :
       <!-- 연도 선택 -->
       <select name="birth_year" id="birth_year">
@@ -223,8 +214,6 @@
       <input type="submit" value="가입하기" />
       <input type="reset" value="취소하기" onclick="history.back()"/>
     </form>
-    <!-- 다음 주소검색 API -->
-    <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="js/daum_adress_api.js"></script>
+    
   </body>
 </html>

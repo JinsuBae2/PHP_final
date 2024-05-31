@@ -4,78 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        section {
-            margin: 20px auto;
-            max-width: 800px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        h3 {
-            color: #333;
-        }
-
-        input[type="text"],
-        input[type="file"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        #rating {
-            width: 470px;
-            margin-bottom: 10px;
-        }
-
-        datalist {
-            display: grid;
-            grid-auto-flow: column;
-            width: 580px;
-            margin-bottom: 10px;
-        }
-
-        input[type="submit"],
-        input[type="button"] {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        input[type="button"] {
-            background-color: #6c757d;
-        }
-
-        input[type="submit"]:hover,
-        input[type="button"]:hover {
-            background-color: #0056b3;
-        }
-
-        input[type="button"]:hover {
-            background-color: #5a6268;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/store_post.css">
     <script>
         const title = document.getElementById('post_name');
         const address = document.getElementById('post_address');
@@ -120,7 +49,7 @@
     ?>
     <section>
     <h3>글쓰기</h3> <hr>
-    <form action="post_store_server.php?userId=<?=$session_userId?>" method="post" enctype="multipart/form-data">
+    <form action="store_post_server.php?userId=<?=$session_userId?>" method="post" enctype="multipart/form-data">
         사용자 이름 : <?=$session_userId?> <br>
         <input type="text" name="post_name" id="post_name" placeholder="음식점 이름">  
         <input type="button" value="찾기" onclick="store_search()"> <br>

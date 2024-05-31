@@ -23,23 +23,26 @@
 
         include "db_con.php";
         
-        //2.DB사용 - sql명령어
-        $sql = "INSERT INTO signup (userId, userPw, userEmail, userTel, userGender, userName, userBirth, postcode, address, signup_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        // DB 사용 - sql명령어
+        $sql = "INSERT INTO signup (userId, userPw, userEmail, userTel, userGender, userName, userBirth, postcode, address, signup_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         // 준비된 문(Prepared Statement) 준비
         $stmt = mysqli_prepare($con, $sql);
         
         // 변수를 준비된 문에 바인딩
-        mysqli_stmt_bind_param($stmt, "sssssssss", $userId, $hashed_password, $userEmail, $userTel, $userGender, $userName, $userBirth, $postcode, $address, $signup_date);
+        mysqli_stmt_bind_param($stmt, "ssssssssss", $userId, $hashed_password, $userEmail, $userTel, $userGender, $userName, $userBirth, $postCode, $address, $signup_date);
+
+        // 실행
+        mysqli_stmt_execute($stmt);
         
-       // 3. DB 해제
-       mysqli_stmt_close($stmt);
-       mysqli_close($con);
+        // DB 해제
+        mysqli_stmt_close($stmt);
+        mysqli_close($con);
     ?>  
-    <!-- <script>
+    <script>
         alert("회원가입이 완료되었습니다.")
-        location.href('index.php');
-    </script> -->
+        location.href = 'index.php';
+    </script>
     <p>
         아이디 : <?=$userId?>   <br>
         비밀번호 : <?=$userPw?> <br>

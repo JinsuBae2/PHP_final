@@ -1,4 +1,7 @@
-    <!DOCTYPE html>
+<?php 
+    include 'header.php';
+?>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -89,17 +92,7 @@
         
     </head>
     <body>
-
-    <?php 
-        include 'header.php';
-     ?>
-
     <?php
-        
-        $userId = $_SESSION['userId'];
-        // if (isset($_SESSION['userId'])){
-        //     $userId = $_SESSION['userId'];
-        // }
         include "db_con.php";
 
 
@@ -134,9 +127,9 @@
     ?>
         <h1>회원정보 수정</h1>
         <form action="user_update_server.php" method="post">
-            아이디 : <input type="text" name="userId" id="" value="<?= $row["userId"]; ?>" readonly /> <br /> 
-            비밀번호 : <input type="password" name="userPw1" id="" />
-            비밀번호확인 : <input type="password" name="userPw2" id="" /> <br>
+            아이디 : <input type="text" name="userId" id="userId" value="<?= $row["userId"]; ?>" readonly /> <br /> 
+            비밀번호 : <input type="password" name="userPw1" id="userPw1" />
+            비밀번호확인 : <input type="password" name="userPw2" id="userPw2" /> <br>
             이메일 : <input type="text" id="userEmail" name="userEmail" value="<?= $userEmail; ?>" /> @
             <input type="text" name="emailDomain" id="emailDomain" placeholder="직접 입력">
             <select name="selectEmailDomain" id="selectEmailDomain" onchange="checkEmailDomain()">
@@ -165,7 +158,7 @@
                 <option value="여" <?= $row['userGender'] == '여' ? 'selected' : ''; ?>>여</option>
             </select>
             <br />
-            이름 : <input type="text" name="userName" id="" value="<?= $row["userName"]; ?>"/> <br />
+            이름 : <input type="text" name="userName" id="userName" value="<?= $row["userName"]; ?>"/> <br />
             생년월일 :
             <input
                 type="date"
@@ -228,6 +221,9 @@
                     history.back();
                 }
             }
+
+            const userPw1 = document.getElementById('userPw1').value
+            console.log(userPw1)
         </script>
     </body>
     </html>

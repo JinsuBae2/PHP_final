@@ -39,7 +39,8 @@
         }
 
         $userPw = $_POST['newPassword1'];
-
+        
+        $hashed_password = password_hash($userPw, PASSWORD_DEFAULT);
         include 'db_con.php';
 
 
@@ -48,10 +49,10 @@
         $stmt = mysqli_prepare($con, $sql);
         
         if ($stmt === false) {
-            die("준비된 SQL문 생성 실패: " . mysqli_error($conn));
+            die("준비된 SQL문 생성 실패: " . mysqli_error($con));
         }
 
-        mysqli_stmt_bind_param($stmt, "ss", $userPw, $userId);
+        mysqli_stmt_bind_param($stmt, "ss", $hashed_password, $userId);
 
         // 쿼리 실행
         if (mysqli_stmt_execute($stmt)) {
@@ -59,15 +60,15 @@
         } else {
             echo "Error: " . mysqli_error($con);
         }
-        ?>
+    ?>
         <button onclick="window.close()">확인</button>
-        <?php
+    <?php
 
         // 준비된 SQL문 종료
         mysqli_stmt_close($stmt);
 
         // 데이터베이스 연결 종료
-        mysqli_close($conn);
+        mysqli_close($con);
     ?>
 </body>
 </html>

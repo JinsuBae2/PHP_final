@@ -177,8 +177,12 @@
                                 <p class="col4"><?=$store_address?></p>
                                 <p class="col5"><?=$recommend_menu?></p>
                                 <p class="col6"><?=$rating_star?></p>
-                                <p class="col7"><img src="./images/<?=$file_copied?>" alt=" "></p>
+                                <hr>
+                                <?php if (!empty($file_copied) && file_exists("./images/" . $file_copied)) { ?>
+                                    <p class="col7"><img src="./images/<?=$file_copied?>" alt=" "></p>
+                                <?php } ?>
                                 <p class="col8"><?=$post_contents?></p>
+                                <hr>
                                 <!-- 좋아요 버튼 -->
                                 <form method="post" action="store_like.php?userId=<?=$session_userId?>&post_Id=<?=$post_Id?>" onsubmit="saveScrollPosition()">
                                     <button style="border: 0; background-color: transparent; cursor:pointer;" type="submit">
@@ -193,7 +197,7 @@
                                     <span style="font-size:20px"><?=$store_like?></span>
                                 </form>
                                 <?php if ($session_userId == $userId) {?>
-                                        <button class="postcreateBtn" onclick="location.href= 'store_post_update.php'">수정하기</button>
+                                        <button class="postcreateBtn" onclick="location.href= 'store_post_update.php?post_Id=<?=$post_Id?>'">수정하기</button>
                                 <?php } ?>
                                 
                             </div>

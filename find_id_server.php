@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php 
+<?php 
         $findName = $_POST['findName'];
         $findEmail = $_POST['findEmail'].'@'.$_POST['findEmailDomain'];
 
         include 'db_con.php';
-
-        // 연결 오류 확인
-        if (!$con) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
 
         // SQL Injection 방지를 위한 prepared statement 사용
         $sql = "SELECT * FROM signup WHERE userName = ? AND userEmail = ?";
@@ -36,11 +23,11 @@
         } else {
             // 사용자가 있으면 결과 가져오기
             $row = mysqli_fetch_assoc($result);
-            $userId = $row['userId']; // 사용자 ID를 가져옵니다. 'userId'는 해당 컬럼의 실제 이름이어야 합니다.
+            $userId = $row['userId'];
     ?>
             <script>
                 alert("사용자 아이디는 <?= $userId ?>입니다.")
-                history.back();
+                history.go(-2);
             </script>
     <?php        
         }
@@ -50,5 +37,3 @@
         mysqli_stmt_close($stmt);
         mysqli_close($con);
     ?>
-</body>
-</html>

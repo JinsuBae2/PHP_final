@@ -15,20 +15,10 @@
     $sql = "SELECT * FROM store WHERE x is null order by post_Id asc";
     $result = mysqli_query($con, $sql);
 
-    if($result) {
-        ?>
-
-        <script> alert("연결에 성공했습니다.");</script>
-
-    <?php
-    }
-    else{
-    ?>
-
-        <script> alert("연결에 실패했습니다.");</script>
-
-    <?php
-
+    if(mysqli_num_rows($result) > 0){
+        echo "<script> alert('새로운 음식점이 등록되어 위치를 업데이트 합니다.');</script>";
+    } else {
+        echo "<script> location.href='store_list.php'</script>";
     }
 
     ?>

@@ -56,7 +56,7 @@
     <form action="find_id_server.php", method="post">
         <input type="text" name="findName" id="" placeholder="이름"> <br>
         <input type="text" id="findEmail" name="findEmail" placeholder="이메일"/> @
-        <input type="text" name="findeEmailDomain" id="findeEmailDomain" placeholder="직접 입력">
+        <input type="text" name="findEmailDomain" id="findEmailDomain" placeholder="직접 입력">
         <select name="selectFindEmailDomain" id="selectFindEmailDomain" onchange=checkEmailDomain()>
             <option value="">직접 입력</option>
             <option value="gmail.com">gmail.com</option>
@@ -72,9 +72,9 @@
     <script>
         checkEmailDomain = () => {
             var selectFindEmailDomain = document.getElementById('selectFindEmailDomain').value;
-            var findeEmailDomain =document.getElementById('findeEmailDomain');
+            var findEmailDomain =document.getElementById('findEmailDomain');
 
-            findeEmailDomain.value = selectFindEmailDomain;
+            findEmailDomain.value = selectFindEmailDomain;
         }
     </script>
 </body>

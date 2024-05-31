@@ -1,22 +1,29 @@
 <?php
-    include "db_con.php";
+include "db_con.php";
 
-    $post_Id = $_POST['post_Id'];
-    $x = $_POST['x'];
-    $y = $_POST['y'];
+$post_Id = mysqli_real_escape_string($con, $_POST['post_Id']);
+$x = mysqli_real_escape_string($con, $_POST['x']);
+$y = mysqli_real_escape_string($con, $_POST['y']);
 
-    echo "post_Id : ".$post_Id."    =      ";
-    echo "x : ".$x."     /     ";
-    echo "y : ".$y;
+echo "post_Id : " . $post_Id . "    =      ";
+echo "x : " . $x . "     /     ";
+echo "y : " . $y;
 
-    $sql = "UPDATE store SET x='$x', y='$y' WHERE post_Id=$post_Id";
+$sql = "UPDATE store SET x='$x', y='$y' WHERE post_Id=$post_Id";
 
-    $result = mysqli_query($con, $sql);
+$result = mysqli_query($con, $sql);
 
-    mysqli_close($con);
-
+if ($result) {
     echo "<script>
             alert('업데이트 성공');
             location.href = 'store_list.php';
-        </script>"
+          </script>";
+} else {
+    echo "<script>
+            alert('업데이트 실패: " . mysqli_error($con) . "');
+            location.href = 'store_list.php';
+          </script>";
+}
+
+mysqli_close($con);
 ?>
