@@ -1,0 +1,84 @@
+body {
+  font-family: "Arial", sans-serif; /* 기본 글씨체를 유지하거나 'Segoe UI', 'Roboto'로 변경할 수 있습니다. */
+  background-color: #fafafa; /* 밝은 회색으로 변경 */
+  color: #262626; /* 어두운 글씨색 */
+  margin: 0;
+  padding: 20px;
+}
+
+section {
+  padding: 0 150px; /* 좌우 패딩 조정 */
+}
+
+/* 게시판 목록보기 스타일 */
+#store_list_container {
+  text-align: center;
+  overflow-y: scroll;
+  border: 1px solid #dddddd;
+  padding: 10px;
+  background-color: white;
+}
+
+#store_list_div {
+  text-align: center; /* 왼쪽 정렬로 변경 */
+  border: 1px solid #e6e6e6; /* 경계선 스타일 변경 */
+  border-radius: 10px; /* 둥근 모서리 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  width: 50%;
+  min-height: 300px;
+  margin: 20px auto; /* 중앙 정렬 */
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+form button,
+.postcreateBtn {
+  padding: 8px 16px;
+  background-color: #0095f6; /* 파란색으로 변경 */
+  color: white;
+  border-radius: 4px; /* 둥근 모서리 */
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+form button:hover,
+.postcreateBtn:hover {
+  background-color: #007bff; /* 호버 색상 변경 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 호버시 그림자 강조 */
+}
+
+/* 좋아요 버튼 스타일링 */
+form button[type="submit"] {
+  background-color: transparent;
+  padding: 0;
+}
+
+form button[type="submit"]:hover {
+  background-color: transparent;
+}
+
+/* 이미지 스타일링 (예시) */
+#store_list_div .col7 img {
+  width: 300px; /* 이미지 크기 조정 */
+  height: 300px;
+  border-radius: 10%; /* 원형 이미지 */
+}
+/* 더보기 버튼 스타일 */
+.more-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* 파란색 배경 */
+  color: #ffffff; /* 흰색 텍스트 */
+  text-align: center;
+  text-decoration: none; /* 링크 밑줄 제거 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  font-weight: bold; /* 글자 굵게 */
+  transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
+}
+.more-button:hover {
+  background-color: #0056b3; /* 마우스 오버 시 배경색 변경 */
+  color: #fff; /* 마우스 오버 시 텍스트 색상 유지 */
+  text-decoration: none; /* 마우스 오버 시 밑줄 제거 유지 */
+}

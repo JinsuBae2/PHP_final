@@ -3,11 +3,12 @@
         $store_name = $_POST['post_name'];
         $store_address = $_POST['post_address'];
         $post_contents = $_POST['post_contents'];
+        $category = $_POST['category'];
         $recommend_menu = $_POST['recommend_menu'];
         $rating = $_POST['rating'];
         $post_date = date('Y-m-d H:i:s');
 
-        echo $userId, $store_name, $store_address, $post_contents, $recommend_menu, $rating, $upfile_name, $upfile_type, $copied_file_name ;
+        echo $userId, $store_name, $store_address, $post_contents, $recommend_menu, $category, $rating, $upfile_name, $upfile_type, $copied_file_name ;
 
         include 'db_con.php';
         
@@ -59,8 +60,8 @@
         }
 
         //2.DB사용 - sql명령어
-        $sql = "INSERT INTO store (userId, store_name, store_address, post_contents, recommend_menu, rating, file_copied, post_date) ";
-        $sql .= "VALUES ('$userId', '$store_name', '$store_address', '$post_contents', '$recommend_menu', $rating, '$copied_file_name', '$post_date')";
+        $sql = "INSERT INTO store (userId, store_name, store_address, post_contents, category, recommend_menu, rating, file_copied, post_date) ";
+        $sql .= "VALUES ('$userId', '$store_name', '$store_address', '$post_contents', '$category', '$recommend_menu', $rating, '$copied_file_name', '$post_date')";
 
         mysqli_query($con, $sql);
         

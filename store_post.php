@@ -56,6 +56,20 @@
         <input type="text" name="post_address" id="post_address" placeholder="음식점 주소"><br>
         이미지 첨부 : <input type="file" name="upfile" id="upfile"> <br>
         <textarea name="post_contents" id="post_contents" cols="30" rows="10" placeholder="내용을 입력하세요."></textarea> <br>
+        음식 종류 :
+            <select name="category" id="category">
+                <option value="">카테고리</option>
+                <option value="한식">한식</option>
+                <option value="중식">중식</option>
+                <option value="양식">양식</option>
+                <option value="분식">분식</option>
+                <option value="패스트푸드">패스트푸드</option>
+                <option value="카페">카페</option>
+                <option value="고기">고기</option>
+                <option value="치킨">치킨</option>
+                <option value="기타">기타</option>
+
+            </select>
         <input type="text" name="recommend_menu" id="recommend_menu" placeholder="추천 메뉴"> <br>
         평점 : <br><input type="range" min="1" max="5" name="rating" id="rating" list="rating_data">
                 <datalist id="rating_data">

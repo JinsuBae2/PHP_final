@@ -35,7 +35,7 @@
       }
 
       #h_div input[type="text"] {
-        width: 200px;
+        width: 400px;
         height: 30px;
         padding: 5px;
         margin-right: 5px;
@@ -79,11 +79,15 @@
     
     <div id="h_div">
         <a href='index.php'>홈</a>
+        <form action="store_post_search.php" method="get">
+          <span>
+              <input type="text" name="search" id="" placeholder="가게이름 or 음식종류를 검색하세요" />
+              <input type="submit" value="검색"/>
+          </span>
+        </form>
+
         <span>
-            <input type="text" name="search" id="" placeholder="검색" />
-            <input type="submit" value="검색"/>
-        </span>
-        <span>
+          
         <?php
             
             $userId = $_SESSION['userId'];

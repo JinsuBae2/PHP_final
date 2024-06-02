@@ -68,3 +68,12 @@ input[type="button"]:hover {
 input[type="button"]:hover {
   background-color: #5a6268;
 }
+
+input[type="button"][value="글 삭제"] {
+  background-color: red;
+  float: right;
+}
+
+input[type="button"][value="글 삭제"]:hover {
+  background-color: darkred;
+}
