@@ -11,7 +11,37 @@
             width: 200px;
             padding: 10px;
         }
+        #btnSection {
+            position: absolute;
+            left: 10px;
+            top: 110px;
+            z-index: 1;
+        }
+
+        #currentLocationBtn {
+            cursor: pointer;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #currentLocationBtn:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid #007bff;
+        }
+
     </style>
+    
 </head>
 
 <body>
@@ -19,8 +49,8 @@
 
 <div >
     <div id='map' class="display:inline-block" style="width: 1540px; height: 700px;"></div>
-    <div style="position: absolute; cursor: default; z-index: 1; margin-bottom: 59%; margin-left:10px; height: 19px; line-height: 14px; left: 0px; bottom: 0px; color: rgb(0, 0, 0);" id="btnSection">
-        <button onclick="panTo()">현위치</button> 
+    <div id="btnSection">
+        <button onclick="panTo()" id="currentLocationBtn">현위치</button> 
     </div>
 </div>
     <!-- <div class="display:inline-block" style="background-color:blue; width:10%; height:200px; margin-left:600px" ></div> -->
@@ -202,7 +232,7 @@
                 }
                 circle = new kakao.maps.Circle({
                     center: new kakao.maps.LatLng(marker.getPosition().getLat(), marker.getPosition().getLng()), // 원의 중심좌표 입니다
-                    radius: 1000, // 미터 단위의 원의 반지름입니다 dd
+                    radius: 1000, // 미터 단위의 원의 반지름입니
                     strokeWeight: 1, // 선의 두께입니다 
                     strokeColor: '#75B8FA', // 선의 색깔입니다
                     strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다

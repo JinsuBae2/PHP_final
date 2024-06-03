@@ -84,7 +84,7 @@
                                 <hr>
                                 <!-- 좋아요 버튼 -->
                                 <form method="post" action="store_like.php?userId=<?=$session_userId?>&post_Id=<?=$post_Id?>" onsubmit="saveScrollPosition()">
-                                    <button style="border: 0; background-color: transparent; cursor:pointer;" type="submit">
+                                    <button class='like_btn' style="border: 0; background-color: transparent; cursor:pointer;" type="submit">
                                         <?php 
                                             if (!str_contains($like_Id, $session_userId)){
                                         ?>

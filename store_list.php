@@ -60,19 +60,6 @@
                     if (!$result) {
                         echo "<li>등록된 글이 없습니다.</li>";
                     } else {
-                        // while ($row = mysqli_fetch_array($result)) {
-                            // $post_Id = $row['post_Id'];
-                            // $userId = $row['userId'];
-                            // $store_name = $row['store_name'];
-                            // $store_address = $row['store_address'];
-                            // $post_contents = $row['post_contents'];
-                            // $recommend_menu = $row['recommend_menu'];
-                            // $rating = $row['rating'];
-                            // $store_like = $row['store_like'];
-                            // $post_date = $row['post_date'];
-                            // $file_copied = $row['file_copied'];
-                            // $like_Id = $row['like_Id'];
-                            // $rating_star = str_repeat('⭐️', $rating);
                         foreach ($posts as $post) {
                             $post_Id = $post['post_Id'];
                             $userId = $post['userId'];
@@ -103,7 +90,7 @@
                                 <hr>
                                 <!-- 좋아요 버튼 -->
                                 <form method="post" action="store_like.php?userId=<?=$session_userId?>&post_Id=<?=$post_Id?>" onsubmit="saveScrollPosition()">
-                                    <button style="border: 0; background-color: transparent; cursor:pointer;" type="submit">
+                                    <button class="like_btn" type="submit">
                                         <?php 
                                             if (!str_contains($like_Id, $session_userId)){
                                         ?>

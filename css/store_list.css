@@ -1,3 +1,4 @@
+/* 기존 스타일 유지 */
 body {
   font-family: "Arial", sans-serif; /* 기본 글씨체를 유지하거나 'Segoe UI', 'Roboto'로 변경할 수 있습니다. */
   background-color: #fafafa; /* 밝은 회색으로 변경 */
@@ -49,14 +50,15 @@ form button:hover,
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 호버시 그림자 강조 */
 }
 
-/* 좋아요 버튼 스타일링 */
-form button[type="submit"] {
-  background-color: transparent;
-  padding: 0;
+/* 좋아요 버튼 스타일링 제거 */
+form .like_btn {
+  all: unset;
+  margin: 5px;
 }
-
-form button[type="submit"]:hover {
-  background-color: transparent;
+form .like_btn:hover {
+  all: unset;
+  margin: 5px;
+  cursor: pointer;
 }
 
 /* 이미지 스타일링 (예시) */
@@ -65,6 +67,7 @@ form button[type="submit"]:hover {
   height: 300px;
   border-radius: 10%; /* 원형 이미지 */
 }
+
 /* 더보기 버튼 스타일 */
 .more-button {
   display: inline-block;
