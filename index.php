@@ -10,10 +10,10 @@
         <?php include 'header.php'; ?>
     </header>
     <section>
-        
+        <?php include 'section.php' ?>
     </section>
     <footer>
-        
+        <?php include 'footer.php'; ?>      
     </footer>
 </body>
 </html>
