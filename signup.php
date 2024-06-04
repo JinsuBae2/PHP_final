@@ -28,7 +28,7 @@
       }
 
       /* 폼 스타일링 */
-      form {
+      .signup_form {
           background: #fff;
           padding: 20px;
           padding-left: 30%;
@@ -98,7 +98,7 @@
   </head>
   <body>
     <h1>회원가입</h1>
-    <form action="signup_server.php" method="post" onsubmit="return validateForm()">
+    <form class="signup_form" action="signup_server.php" method="post" onsubmit="return validateForm()">
       아이디 : <input type="text" name="userId" id="userId" /> <input type="button" value="중복확인" onclick=checkId()> <br />
       비밀번호 : <input type="password" name="userPw1" id="" /> <br />
       비밀번호 확인 : <input type="password" name="userPw2" id="" /> <br />

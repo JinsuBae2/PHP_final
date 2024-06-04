@@ -8,8 +8,6 @@
         $rating = $_POST['rating'];
         $post_date = date('Y-m-d H:i:s');
 
-        echo $userId, $store_name, $store_address, $post_contents, $recommend_menu, $category, $rating, $upfile_name, $upfile_type, $copied_file_name ;
-
         include 'db_con.php';
         
         $upload_dir = './images/';

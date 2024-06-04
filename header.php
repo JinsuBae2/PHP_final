@@ -118,7 +118,7 @@
           window.open(
             "login.php",
             "loginWindow",
-            "width=400,height=600,left=100,top=100"
+            "width=400,height=600,left=700,top=200"
           );
         }
       </script>

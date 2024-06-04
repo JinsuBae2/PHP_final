@@ -1,0 +1,40 @@
+index.html  // 메인 페이지
+db_con.php  // db 연결 코드
+├── footer.php  
+├── section.php // 메인 페이지 뷰
+│   └── section_fetch_category_stores.php   // 메인 페이지 카테코리별 게시글 select 파일
+├── header.php  // 
+│   ├── 회원가입
+│   │   ├── signup.php  // 회원가입 페이지 (카카오 주소 찾기 API사용 하여 주소 검색)
+│   │   ├── signup_server.php   // 회원가입 처리 로직
+│   │   └── signup_check_id.php // id 중복 확인
+│   ├── 검색
+│   │   └── store_post_search.php   // 카테고리 or 가게이름별로 검색 기능
+│   ├── 로그인
+│   │   ├── login.php   // 로그인 페이지 (팝업 형식)
+│   │   └── login_server.php    // 로그인 데이터 처리 파일
+│   └── 아이디/비밀번호 찾기
+│       ├── find_id.php // 아이디 찾기
+│       ├── find_id_server.php  
+│       ├── find_pw.php // 비밀번호 찾기
+│       ├── find_pw_server.php
+│       ├── find_reset_password.php // 비밀번호 재설정
+│       └── find_reset_password_server.php
+├── 회원정보 수정
+│   ├── user_update.php // 회원정보 수정
+│   │   └── user_update_server.php
+│   └── user_delete_server.php  // 회원정보 삭제
+├── logout.php  // 로그아웃 (세션파기)
+└── nav
+    ├── view_store.php  // 맛집 지도 뷰
+    │   └── daum_adress_api.js  // 카카오 지도 API
+    ├── store_list.php  // 리스트 형식으로 게시글 화면 , 페이징 기능 더보기로 구현
+    ├── store_post.php  // 게시글 작성
+    │   └── geo_convert.php // 주소 좌표 변환
+    │   └── geo_save.php    // 주소 좌표 저장
+    │   └── store_post_server.php
+    ├── store_like.php  // 게시글 좋아요 기능
+    └── store_post_update.php   // 게시글 수정
+        └── store_post_update_server.php
+        └── store_post_delete_server.php // 게시글 삭제
+            

@@ -115,7 +115,11 @@
             <?php 
             echo "<script>console.log($total_post, $viewPost, $total_pages )</script>";
             if ($viewPost - $total_post > 5) { ?>
-                <script>alert('마지막 게시글 입니다.')</script>
+                <script>
+                    alert('마지막 게시글 입니다.')
+                    location.href='store_list.php?offset=<?=$offset - 1 ?>'
+                </script>
+
                 <div class="more-button">더보기</div>
             <?php } else { ?>
                 <a href="store_list.php?offset=<?=$offset + 1 ?>" onclick="saveScrollPosition()" class="more-button">더보기</a>
